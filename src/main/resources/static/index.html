@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    param1 <input id="jinja_param1" type="text" value="context_param1_value"/>
+</div>
+<div>
+    param2 <input id="jinja_param2" type="text" value="context_param2_value"/>
+</div>
+<div>
+    param3 <input id="jinja_param3" type="text" value="context_param3_value"/>
+</div>
+<div>
+    template<br>
+    <textarea id="jinja_template" rows="10" cols="80">{%- set value = (range(1,4)|random) -%}
+Value = {{ value }}
+
+{% if value == '1' -%}
+If value == 1 - Context param1 "{{ param1|replace("_"," ")|title }}"
+{% elif value == '2' -%}
+If value == 2 - Context param2 "{{ param2|truncate(5,True) }}"
+{% else -%}
+Else          - Context param3 "{{ param3|upper }}"
+{% endif %}</textarea>
+</div>
+<hr/>
+<div>
+    response:<br>
+    <textarea id="jinja_response" rows="5" cols="80"></textarea>
+</div>
+<div>
+    result:<br>
+    <textarea id="jinja_result" rows="5" cols="80"></textarea>
+</div>
+<div>
+    <button id="send">send</button>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
